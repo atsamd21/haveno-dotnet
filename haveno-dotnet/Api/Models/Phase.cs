@@ -1,0 +1,14 @@
+namespace Haveno.Api.Models;
+
+public enum Phase
+{
+    PB_ERROR_PHASE,
+    INIT,
+    DEPOSIT_REQUESTED,
+    DEPOSITS_PUBLISHED,
+    DEPOSITS_CONFIRMED,
+    DEPOSITS_UNLOCKED,
+    DEPOSITS_FINALIZED,
+    PAYMENT_SENT,
+    PAYMENT_RECEIVED
+}

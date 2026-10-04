@@ -1,0 +1,1 @@
+https://github.com/haveno-dex/haveno/blob/master/docs/installing.md#run-a-local-test-network

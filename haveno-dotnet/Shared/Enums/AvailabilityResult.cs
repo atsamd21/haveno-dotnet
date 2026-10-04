@@ -1,0 +1,20 @@
+namespace Haveno.Shared.Enums;
+
+public enum AvailabilityResult
+{
+    PB_ERROR = 0,
+    UNKNOWN_FAILURE = 1,
+    AVAILABLE = 2,
+    OFFER_TAKEN = 3,
+    PRICE_OUT_OF_TOLERANCE = 4,
+    MARKET_PRICE_NOT_AVAILABLE = 5,
+    NO_ARBITRATORS = 6,
+    NO_MEDIATORS = 7,
+    USER_IGNORED = 8,
+    MISSING_MANDATORY_CAPABILITY = 9,
+    NO_REFUND_AGENTS = 10,
+    UNCONF_TX_LIMIT_HIT = 11,
+    MAKER_DENIED_API_USER = 12,
+    PRICE_CHECK_FAILED = 13,
+    MAKER_DENIED_TAKER = 14
+}

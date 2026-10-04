@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "haveno-dotnet", "haveno-dotnet\haveno-dotnet.csproj", "{4B8BE483-5FC0-405B-9383-7D72E5A14298}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "haveno-dotnet.Tests", "haveno-dotnet.Tests\haveno-dotnet.Tests.csproj", "{3C98E87D-3D91-4385-8422-87D3344CE073}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B8BE483-5FC0-405B-9383-7D72E5A14298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B8BE483-5FC0-405B-9383-7D72E5A14298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B8BE483-5FC0-405B-9383-7D72E5A14298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B8BE483-5FC0-405B-9383-7D72E5A14298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C98E87D-3D91-4385-8422-87D3344CE073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C98E87D-3D91-4385-8422-87D3344CE073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C98E87D-3D91-4385-8422-87D3344CE073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C98E87D-3D91-4385-8422-87D3344CE073}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E8EF40C-3124-4488-BE21-FA54DDB06528}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Haveno</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <Version>0.0.1</Version>
+    <Authors>atsamd21</Authors>
+    <Description>A library used to interact with the Haveno gRPC API</Description>
+    <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/atsamd21/haveno-dotnet</RepositoryUrl>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Grpc.Net.Client" Version="2.76.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.13" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.13" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.13" />
+    <PackageReference Include="protobuf-net" Version="3.2.56" />
+    <PackageReference Include="protobuf-net.Grpc" Version="1.2.2" />
+    <PackageReference Include="System.Linq.AsyncEnumerable" Version="10.0.11" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="8.1.2" />
+  </ItemGroup>
+</Project>
