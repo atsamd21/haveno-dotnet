@@ -18,4 +18,7 @@ public class PaymentAccountFormField
     public List<Country> SupportedSepaEuroCountries { get; set; } = [];
     public List<Country> SupportedSepaNonEuroCountries { get; set; } = [];
     public List<string> RequiredForCountries { get; set; } = [];
+    public List<string> SupportedValues { get; set; } = [];
+    public bool? Required { get; set; }
+    public List<FieldId> RequiredIfAnyFieldHasValue { get; set; } = [];
 }

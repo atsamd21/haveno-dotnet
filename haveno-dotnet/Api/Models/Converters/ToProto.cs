@@ -48,7 +48,10 @@ internal static class ToProto
                 }
             }).ToList(),
             SupportedSepaEuroCountries = paymentAccountFormField.SupportedSepaEuroCountries.Select(y => y.Convert()).ToList(),
-            SupportedSepaNonEuroCountries = paymentAccountFormField.SupportedSepaNonEuroCountries.Select(y => y.Convert()).ToList()
+            SupportedSepaNonEuroCountries = paymentAccountFormField.SupportedSepaNonEuroCountries.Select(y => y.Convert()).ToList(),
+            SupportedValues = paymentAccountFormField.SupportedValues,
+            RequiredIfAnyFieldHasValue = paymentAccountFormField.RequiredIfAnyFieldHasValue,
+            Required = paymentAccountFormField.Required
         };
     }
 

@@ -134,7 +134,10 @@ public sealed class PaymentAccountService : IPaymentAccountService
                 }).ToList(),
                 SupportedCountries = x.SupportedCountries.Select(y => y.Convert()).ToList(),
                 SupportedSepaEuroCountries = x.SupportedSepaEuroCountries.Select(y => y.Convert()).ToList(),
-                SupportedSepaNonEuroCountries = x.SupportedSepaNonEuroCountries.Select(y => y.Convert()).ToList()
+                SupportedSepaNonEuroCountries = x.SupportedSepaNonEuroCountries.Select(y => y.Convert()).ToList(),
+                RequiredIfAnyFieldHasValue = x.RequiredIfAnyFieldHasValue,
+                Required = x.Required,
+                SupportedValues = x.SupportedValues
             }).ToList()
         };
 

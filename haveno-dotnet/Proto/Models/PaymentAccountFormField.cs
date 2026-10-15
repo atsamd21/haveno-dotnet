@@ -30,4 +30,10 @@ internal class PaymentAccountFormField
     public List<Country> SupportedSepaNonEuroCountries { get; set; } = [];
     [ProtoMember(12)]
     public List<string> RequiredForCountries { get; set; } = [];
+    [ProtoMember(13)]
+    public List<string> SupportedValues { get; set; } = [];
+    [ProtoMember(14)]
+    public bool? Required { get; set; }
+    [ProtoMember(15)]
+    public List<FieldId> RequiredIfAnyFieldHasValue { get; set; } = [];
 }
