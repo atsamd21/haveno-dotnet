@@ -53,8 +53,8 @@ public class OfferInfo
     public double PenaltyFeePercent { get; set; }
     public double BuyerSecurityDepositPercent { get; set; }
     public double SellerSecurityDepositPercent { get; set; }
-    public decimal FiatVolume { get; set; }
-    public decimal FiatMinVolume { get; set; }
+    public decimal CounterCurrencyVolume { get; set; }
+    public decimal CounterCurrencyMinVolume { get; set; }
     public decimal TriggerPrice { get; set; }
     public string PaymentAccountId { get; set; } = string.Empty;
     public PaymentMethodId PaymentMethodId { get; set; }
