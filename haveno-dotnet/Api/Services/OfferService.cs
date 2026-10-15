@@ -16,6 +16,8 @@ public interface IOffersService
     Task<OfferInfo> GetOfferAsync(string offerId, CancellationToken cancellationToken = default);
     Task<IEnumerable<OfferInfo>> GetOffersAsync(string currencyCode, OfferDirection direction, CancellationToken cancellationToken = default);
     Task<OfferInfo> EditOfferAsync(EditOfferRequest editOfferRequest, CancellationToken cancellationToken = default);
+    Task DeactivateOfferAsync(string offerId, CancellationToken cancellationToken = default);
+    Task ActivateOfferAsync(string offerId, CancellationToken cancellationToken = default);
 }
 
 public sealed class OffersService : IOffersService
@@ -27,6 +29,24 @@ public sealed class OffersService : IOffersService
     {
         _grpcChannelSingleton = grpcChannelSingleton;
         _havenoOffersClient = _grpcChannelSingleton.Channel.CreateGrpcService<IHavenoOffersClient>();
+    }
+
+    public async Task ActivateOfferAsync(string offerId, CancellationToken cancellationToken = default)
+    {
+        await _havenoOffersClient.ActivateOfferAsync(
+           new Proto.Models.Requests.ActivateOfferRequest
+           {
+               OfferId = offerId
+           }, cancellationToken);
+    }
+
+    public async Task DeactivateOfferAsync(string offerId, CancellationToken cancellationToken = default)
+    {
+        await _havenoOffersClient.DeactivateOfferAsync(
+           new Proto.Models.Requests.DeactivateOfferRequest
+           {
+               OfferId = offerId
+           }, cancellationToken);
     }
 
     public async Task<OfferInfo> EditOfferAsync(EditOfferRequest editOfferRequest, CancellationToken cancellationToken = default)
