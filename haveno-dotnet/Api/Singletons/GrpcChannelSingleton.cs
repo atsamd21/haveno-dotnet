@@ -8,7 +8,14 @@ namespace Haveno.Api.Singletons;
 /// </summary>
 public sealed class GrpcChannelSingleton
 {
-    public GrpcChannel Channel { get { return field ?? throw new HavenoException("CreateChannel must be called before using Channel."); } private set; }
+    private GrpcChannel? _channel;
+    public GrpcChannel Channel 
+    { 
+        get 
+        { 
+            return _channel ?? throw new HavenoException("CreateChannel must be called before using Channel."); 
+        }
+    }
 
     public GrpcChannelSingleton()
     {
@@ -44,6 +51,11 @@ public sealed class GrpcChannelSingleton
             DisposeHttpClient = true
         };
 
-        Channel = GrpcChannel.ForAddress(host, channelOptions);
+        if (_channel is not null)
+        {
+            _channel.Dispose();
+        }
+
+        _channel = GrpcChannel.ForAddress(host, channelOptions);
     }
 }
