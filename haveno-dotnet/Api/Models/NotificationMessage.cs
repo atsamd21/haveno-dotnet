@@ -11,4 +11,5 @@ public class NotificationMessage
     public string Message { get; set; } = string.Empty;
     public TradeInfo? Trade { get; set; }
     public ChatMessage? ChatMessage { get; set; }
+    public Alert? Alert { get; set; }
 }

@@ -9,6 +9,7 @@ public interface INotificationsSingleton
 {
     IAsyncEnumerable<NotificationMessage> RegisterNotificationListenerAsync(CancellationToken cancellationToken = default);
     Task SendNotificationAsync(NotificationMessage notificationMessage, CancellationToken cancellationToken = default);
+    Task<Alert> GetAlert(CancellationToken cancellationToken = default);
 }
 
 public sealed class NotificationsSingleton : INotificationsSingleton
@@ -20,6 +21,24 @@ public sealed class NotificationsSingleton : INotificationsSingleton
     {
         _grpcChannelSingleton = grpcChannelSingleton;
         _notificationsClient = _grpcChannelSingleton.Channel.CreateGrpcService<IHavenoNotificationsClient>();
+    }
+
+    public async Task<Alert> GetAlert(CancellationToken cancellationToken = default)
+    {
+        var response = await _notificationsClient.GetAlertAsync(
+            new Proto.Models.Requests.GetAlertRequest(), 
+            cancellationToken);
+
+        return new Alert
+        {
+            SignatureAsBase64 = response.Alert.SignatureAsBase64,
+            ExtraData = response.Alert.ExtraData,
+            IsPreReleaseInfo = response.Alert.IsPreReleaseInfo,
+            IsUpdateInfo = response.Alert.IsUpdateInfo,
+            Message = response.Alert.Message,
+            OwnerPubKeyBytes = response.Alert.OwnerPubKeyBytes,
+            Version = response.Alert.Version
+        };
     }
 
     public IAsyncEnumerable<NotificationMessage> RegisterNotificationListenerAsync(CancellationToken cancellationToken = default)

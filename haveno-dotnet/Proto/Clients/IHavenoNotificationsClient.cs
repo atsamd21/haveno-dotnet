@@ -15,4 +15,6 @@ internal interface IHavenoNotificationsClient
     IAsyncEnumerable<NotificationMessage> RegisterNotificationListenerAsync(RegisterNotificationListenerRequest registerNotificationListenerRequest, CancellationToken cancellationToken = default);
     [OperationContract(Name = "SendNotification")]
     Task<SendNotificationReply> SendNotificationAsync(SendNotificationRequest sendNotificationRequest, CancellationToken cancellationToken = default);
+    [OperationContract(Name = "GetAlert")]
+    Task<GetAlertReply> GetAlertAsync(GetAlertRequest getAlertRequest, CancellationToken cancellationToken = default);
 }

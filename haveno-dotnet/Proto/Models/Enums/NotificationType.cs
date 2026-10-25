@@ -6,5 +6,6 @@ internal enum NotificationType
     AppInitialized = 1,
     KeepAlive = 2,
     TradeUpdate = 3,
-    ChatMessage = 4
+    ChatMessage = 4,
+    Alert = 5
 }
