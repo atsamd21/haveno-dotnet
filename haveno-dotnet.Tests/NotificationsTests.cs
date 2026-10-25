@@ -23,6 +23,26 @@ public class NotificationsTests
         _accountService = serviceProvider.GetRequiredKeyedService<IAccountService>("user_1");
     }
 
+    private async Task WaitAppInitializedAsync()
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            await Task.Delay(1_000);
+
+            try
+            {
+                if (await _accountService.IsAppInitializedAsync())
+                    return;
+            }
+            catch
+            {
+
+            }
+        }
+
+        throw new Exception("Timed out");
+    }
+
     private async Task<bool> SendTestMessage(NotificationMessage notificationMessage)
     {
         using CancellationTokenSource cancellationTokenSource = new(5_000);
@@ -121,5 +141,8 @@ public class NotificationsTests
         await _accountService.OpenAccountAsync(SetupFixture.AccountPassword);
 
         Assert.True(await messageReceivedTCS.Task);
+
+        // Should not be needed
+        await WaitAppInitializedAsync();
     }
 }
