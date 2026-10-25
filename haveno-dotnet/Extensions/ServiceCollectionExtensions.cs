@@ -5,15 +5,22 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Haveno.Extensions;
 
+public class HavenoOptions 
+{
+    public required string Host { get; set; }
+    public required string Password { get; set; }
+}
+
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddHavenoServices(this IServiceCollection services)
+    public static IServiceCollection AddHavenoServices(
+        this IServiceCollection services,
+        HavenoOptions options)
     {
         services.TryAddSingleton<GrpcChannelSingleton>((serviceProvider) =>
         {
             var grpcChannelSingleton = new GrpcChannelSingleton();
-            // TODO CONFIG PASSWORD
-            grpcChannelSingleton.CreateChannel("http://127.0.0.1:3201", "apitest12345");
+            grpcChannelSingleton.CreateChannel(options.Host, options.Password);
             return grpcChannelSingleton;
         });
 
