@@ -342,7 +342,7 @@ public class SetupFixture : IAsyncLifetime
 
     private static async Task WaitAppInitializedAsync(IAccountService accountService)
     {
-        for (int i = 0; i < 60; i++)
+        for (int i = 0; i < 600; i++)
         {
             try
             {
@@ -440,7 +440,7 @@ public class SetupFixture : IAsyncLifetime
             }
         };
 
-        await moneroWalletService.StartMiningAsync(20, false, true);
+        await moneroWalletService.StartMiningAsync(2, false, true);
 
         await initialBlocksMined.Task;
 
