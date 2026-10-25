@@ -48,8 +48,8 @@ public class OfferInfo
     public double MarketPriceMarginPercent { get; set; }
     public ulong Amount { get; set; }
     public ulong MinAmount { get; set; }
-    public double MakerFeePercent { get; set; }
-    public double TakerFeePercent { get; set; }
+    public decimal MakerFeePercent { get; set; }
+    public decimal TakerFeePercent { get; set; }
     public double PenaltyFeePercent { get; set; }
     public double BuyerSecurityDepositPercent { get; set; }
     public double SellerSecurityDepositPercent { get; set; }
