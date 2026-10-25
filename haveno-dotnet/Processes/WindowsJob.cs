@@ -14,12 +14,12 @@ public class LinuxJob : IJob
 {
     public void Create(nint handle)
     {
-        throw new NotImplementedException();
+
     }
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+
     }
 }
 
