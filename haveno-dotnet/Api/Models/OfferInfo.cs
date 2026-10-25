@@ -21,23 +21,22 @@ public static class OfferDirectionExtensions
     }
 }
 
+// TODO this enum differs depending on whether the offer is an OpenOffer or Offer in Haveno
+// 
 public enum OfferState
 {
-    //UNKNOWN,
-    //PENDING,
-    //AVAILABLE,
-    //RESERVED,
-    //CLOSED,
-    //CANCELED,
-    //DEACTIVATED
-    PB_ERROR = 0,
-    UNKNOWN = 1,
-    OFFER_FEE_RESERVED = 2,
-    AVAILABLE = 3,
-    NOT_AVAILABLE = 4,
-    REMOVED = 5,
-    MAKER_OFFLINE = 6,
-    INVALID = 7
+    UNKNOWN,
+    PENDING,
+    AVAILABLE,
+    RESERVED,
+    CLOSED,
+    CANCELED,
+    DEACTIVATED,
+    OFFER_FEE_RESERVED,
+    NOT_AVAILABLE,
+    REMOVED,
+    MAKER_OFFLINE,
+    INVALID
 }
 
 public class OfferInfo
