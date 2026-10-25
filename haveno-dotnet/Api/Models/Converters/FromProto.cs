@@ -105,7 +105,6 @@ internal static class FromProto
             Id = offerInfo.Id,
             IsMyOffer = offerInfo.IsMyOffer,
             IsPrivateOffer = offerInfo.IsPrivateOffer,
-            MakerFeePercent = offerInfo.MakerFeePct,
             MarketPriceMarginPercent = offerInfo.MarketPriceMarginPct,
             Challenge = offerInfo.Challenge,
             PaymentMethodId = Enum.Parse<PaymentMethodId>(offerInfo.PaymentMethodId),
