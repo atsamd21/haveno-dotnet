@@ -32,6 +32,24 @@ jobs:
       - name: Build
         run: dotnet build haveno-dotnet.sln -c Release -p:Version=$VERSION
 
+      - name: Check out Haveno
+        uses: actions/checkout@v4
+        with:
+          repository: atsamd21/haveno
+          ref: v1.11.0
+          path: haveno
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: gradle
+
+      - name: Haveno
+        working-directory: haveno
+        run: make skip-tests
+
       - name: Run tests
         run: dotnet test haveno-dotnet.sln -c Release --no-build --verbosity normal
 
