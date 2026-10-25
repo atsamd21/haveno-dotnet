@@ -717,7 +717,7 @@ public class PaymentAccountServiceTests
 
         var ACCOUNT_NAME = "atsamd21";
         var HOLDER_NAME = "atsamd21";
-        var MOBILE_NR = "07123456789";
+        var MOBILE_NR = "+467123456789";
 
         paymentAccountForm.Fields.First(x => x.Id == Shared.Enums.FieldId.ACCOUNT_NAME).Value = ACCOUNT_NAME;
         paymentAccountForm.Fields.First(x => x.Id == Shared.Enums.FieldId.MOBILE_NR).Value = MOBILE_NR;
