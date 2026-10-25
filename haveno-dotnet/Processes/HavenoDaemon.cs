@@ -125,7 +125,7 @@ public class HavenoDaemon : IDisposable
             $"--baseCurrencyNetwork={HavenoDaemonArguments.NetworkType ??= HavenoNetworkType.XMR_MAINNET}",
             $"--logLevel={HavenoDaemonArguments.LogLevel ??= "INFO"}",
             $"--nodePort={HavenoDaemonArguments.NodePort ??= 11111}",
-            $"--apiPort={HavenoDaemonArguments.ApiPort ??= 3201}",
+            $"--apiPort={HavenoDaemonArguments.ApiPort ??= 6201}",
             $"--appName={HavenoDaemonArguments.AppName ??= $"haveno-daemon-{HavenoDaemonArguments.NetworkType ?? HavenoNetworkType.XMR_MAINNET}"}"
         ];
 
