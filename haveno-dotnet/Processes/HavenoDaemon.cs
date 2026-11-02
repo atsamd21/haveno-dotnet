@@ -30,6 +30,15 @@ public class HavenoDaemonArguments
     public string? AppDataDir { get; set; }
 }
 
+public enum DaemonStatus
+{
+    Offline,
+    InitTor,
+    InitWallet,
+    SyncWallet,
+    Running
+}
+
 public class HavenoDaemon : IDisposable
 {
     private readonly string _havenoDaemonPath;
@@ -38,6 +47,7 @@ public class HavenoDaemon : IDisposable
     private Task? _stdoutReadTask;
 
     public HavenoDaemonArguments HavenoDaemonArguments { get; }
+    public DaemonStatus Status { get; private set; }
 
     public HavenoDaemon(
         string havenoDaemonPath,
@@ -176,9 +186,38 @@ public class HavenoDaemon : IDisposable
                             }
                             else
                             {
-                                if (line.Contains("Application fully initialized"))
+                                if (line.Contains("Starting bundled Tor"))
+                                {
+                                    Status = DaemonStatus.InitTor;
+                                    Console.WriteLine("[Haveno] Initializing Tor");
+                                }
+                                else if (line.Contains("Tor SOCKS proxy ready on"))
+                                {
+
+                                }
+                                else if (line.Contains("Init wallet"))
+                                {
+                                    Status = DaemonStatus.InitWallet;
+                                    Console.WriteLine("[Haveno] Initializing wallet");
+                                }
+                                else if (line.Contains("Done initializing main wallet"))
+                                {
+
+                                }
+                                else if (line.Contains("Syncing main wallet from height"))
+                                {
+                                    Status = DaemonStatus.SyncWallet;
+                                    Console.WriteLine("[Haveno] Syncing wallet");
+                                }
+                                else if (line.Contains("Done syncing main wallet"))
+                                {
+
+                                }
+                                else if (line.Contains("Application fully initialized"))
                                 {
                                     daemonReadyTCS.SetResult();
+                                    Status = DaemonStatus.Running;
+                                    Console.WriteLine("[Haveno] Daemon fully initialized");
                                 }
                             }
                         }
@@ -187,6 +226,7 @@ public class HavenoDaemon : IDisposable
             }
             catch (ObjectDisposedException)
             {
+                Status = DaemonStatus.Offline;
                 return;
             }
         }, TaskCreationOptions.LongRunning);
