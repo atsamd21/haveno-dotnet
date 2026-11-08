@@ -34,6 +34,7 @@ public static class TradeHelper
             case PayoutState.PAYOUT_PUBLISHED:
             case PayoutState.PAYOUT_CONFIRMED:
             case PayoutState.PAYOUT_UNLOCKED:
+            case PayoutState.PAYOUT_FINALIZED:
                 tradeRoleAndStep.Step = 4;
                 return tradeRoleAndStep;
             default:
