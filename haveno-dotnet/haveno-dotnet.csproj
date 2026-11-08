@@ -5,7 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>0.0.1</Version>
     <Authors>atsamd21</Authors>
     <Description>A library used to interact with the Haveno gRPC API</Description>
     <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
