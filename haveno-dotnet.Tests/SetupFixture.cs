@@ -442,7 +442,7 @@ public class SetupFixture : IAsyncLifetime
             }
         };
 
-        await moneroWalletService.StartMiningAsync(20, false, true);
+        await moneroWalletService.StartMiningAsync(2, false, true);
 
         await initialBlocksMined.Task;
 
