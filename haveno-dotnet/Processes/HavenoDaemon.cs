@@ -43,7 +43,7 @@ public class HavenoDaemon : IDisposable
 {
     private readonly string _havenoDaemonPath;
     private readonly bool _isSeedNode;
-    private ManagedProcess? _havenoDaemonProcess;
+    private Process? _havenoDaemonProcess;
     private Task? _stdoutReadTask;
 
     public HavenoDaemonArguments HavenoDaemonArguments { get; }
@@ -120,6 +120,7 @@ public class HavenoDaemon : IDisposable
         processStartInfo.RedirectStandardError = true;
         processStartInfo.UseShellExecute = false;
         processStartInfo.CreateNoWindow = true;
+        processStartInfo.KillOnParentExit = true;
 
         string[] arguments = [
             HavenoDaemonArguments.UserDataDir is null ? string.Empty : $"--userDataDir={HavenoDaemonArguments.UserDataDir}",
@@ -148,7 +149,7 @@ public class HavenoDaemon : IDisposable
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && !RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             return;
 
-        _havenoDaemonProcess = ManagedProcess.Start(processStartInfo);
+        _havenoDaemonProcess = Process.Start(processStartInfo);
 
         _ = Task.Factory.StartNew(async () =>
         {

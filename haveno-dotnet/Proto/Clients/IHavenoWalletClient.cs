@@ -3,7 +3,7 @@ using Haveno.Proto.Models.Requests;
 using System.Runtime.CompilerServices;
 using System.ServiceModel;
 
-[assembly: InternalsVisibleTo("ProtoBuf.Grpc.Internal.Proxies")]
+[assembly: InternalsVisibleTo("ProtoBuf.Grpc.Internal.Proxies-1")]
 
 namespace Haveno.Proto.Clients;
 

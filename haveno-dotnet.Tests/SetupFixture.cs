@@ -17,7 +17,7 @@ public partial class MoneroDaemon : IAsyncDisposable
 
     private CancellationTokenSource? _cancellationTokenSource;
     private Task? Task {  get; set; }
-    private ManagedProcess? Process { get; set; }
+    private Process? Process { get; set; }
     private TaskCompletionSource<bool>? _monerodReadyTCS;
     private TaskCompletionSource<bool>? _miningTCS;
     private volatile bool _isMining;
@@ -105,6 +105,7 @@ public partial class MoneroDaemon : IAsyncDisposable
                     RedirectStandardInput = true,
                     UseShellExecute = false,
                     CreateNoWindow = true,
+                    KillOnParentExit = true,
                     ArgumentList =
                     {
                         $"--p2p-bind-port={P2pBindPort}",
@@ -140,7 +141,7 @@ public partial class MoneroDaemon : IAsyncDisposable
                     processStartInfo.ArgumentList.Add(node);
                 }
 
-                Process = ManagedProcess.Start(processStartInfo);
+                Process = Process.Start(processStartInfo);
 
                 string? line;
                 while (!linkedCancellationTokenSource.IsCancellationRequested && (line = Process.StandardOutput.ReadLine()) is not null)
@@ -260,7 +261,7 @@ public class SetupFixture : IAsyncLifetime
     private readonly string _havenoPath;
     private readonly string _moneroPath;
 
-    public ManagedProcess? WalletRpc { get; private set; }
+    public Process? WalletRpc { get; private set; }
     public Dictionary<string, HavenoDaemon> HavenoDaemons { get; } = [];
     public Dictionary<string, MoneroDaemon> MoneroDaemons { get; } = [];
     public IServiceProvider ServiceProvider { get; }
@@ -384,6 +385,7 @@ public class SetupFixture : IAsyncLifetime
                 //RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
+                KillOnParentExit = true,
                 ArgumentList =
                 {
                     $"--testnet",
@@ -398,7 +400,7 @@ public class SetupFixture : IAsyncLifetime
                 }
             };
 
-            WalletRpc = ManagedProcess.Start(processStartInfo);
+            WalletRpc = Process.Start(processStartInfo);
 
             string? line;
             while ((line = WalletRpc.StandardOutput.ReadLine()) is not null)
@@ -440,7 +442,7 @@ public class SetupFixture : IAsyncLifetime
             }
         };
 
-        await moneroWalletService.StartMiningAsync(2, false, true);
+        await moneroWalletService.StartMiningAsync(20, false, true);
 
         await initialBlocksMined.Task;
 
